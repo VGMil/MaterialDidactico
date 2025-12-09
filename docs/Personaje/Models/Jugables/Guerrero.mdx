@@ -4,10 +4,56 @@ import JavaBlock from '@site/src/components/JavaBlock';
 
 Especializado en combate cuerpo a cuerpo, alta defensa y salud.
 
-<JavaBlock title="[NombreProyecto].Models.Jugables.Guerrero">
+<JavaBlock title="package [NombreProyecto].Personaje.Models.Jugables.Guerrero">
 {`
-public class Guerrero extends PersonajeModel {
-    // Implementación pendiente
+import Personaje.Models.PersonajeModel;
+
+public class Guerrero extends PersonajeModel { 
+    
+    private static final int GuerreroVida = 2000; 
+    private static final int GuerreroAtaque = 60;
+    private static final int GuerreroDefensa = 60;
+    private static final int GuerreroVelocidad = 60;
+
+    public Guerrero(String nombre) {
+    // Llama al constructor de la superclase (PersonajeModel)
+        super(GuerreroVida, GuerreroAtaque, GuerreroDefensa, GuerreroVelocidad, nombre);
+    }   
+
+    @Override
+    public void interactuar() {
+        System.out.println("El Guerrero " + this.getNombre() + " saluda con honor");
+    }
+    @Override
+    public void atacar(PersonajeModel enemigo) {
+        // 1. Imprimimos el mensaje de acción
+        System.out.println("El Guerrero " + this.getNombre() + " ataca con fuerza al "
+        + enemigo.getNombre() + "!");
+
+        // 2. Calculamos el daño efectivo (Daño = Ataque - Defensa del Enemigo)
+        // Usamos el 'this.ataque' del Guerrero y el 'getDefensa()' del enemigo.
+        int dañoInfligido = this.ataque - enemigo.getDefensa();
+    
+        // Aseguramos que el daño sea al menos 1, no negativo
+        if (dañoInfligido < 1) {
+            dañoInfligido = 1; 
+        }
+
+        // 3. Aplicamos el daño (Restamos el daño a la vida del enemigo)
+        enemigo.setVida(enemigo.getVida() - dañoInfligido);
+
+        // 4. Imprimimos el resultado de la acción
+        System.out.println("¡Ha infligido " + dañoInfligido +
+         " puntos de daño!");
+        System.out.println("La vida restante de " + enemigo.getNombre() +
+         " es: " + enemigo.getVida());
+    }
+
+    @Override
+    public void escapar(PersonajeModel enemigo) {
+        System.out.println("El Guerrero " + this.getNombre() + " se escapa de " + enemigo.getNombre());
+    }
+
 }
 `}
 </JavaBlock>

@@ -1,13 +1,38 @@
 import JavaBlock from '@site/src/components/JavaBlock';
+import Highlight from '@site/src/components/Highlight';
+import Admonition from '@theme/Admonition';
 
 # PersonajeModel
 
 Clase Abstracta: Contrato Principal. Define atributos y métodos esenciales (salud, atacar, etc.) para todas las subclases.
 
-<JavaBlock title="[NombreProyecto].Models.PersonajeModel">
+<JavaBlock title="package [NombreProyecto].Personaje.Models">
 {`
 public abstract class PersonajeModel {
-    // Implementación pendiente
+    int vida, ataque, defensa, velocidad;
+    String nombre;
+
+    public PersonajeModel(int vida, int ataque, int defensa, int velocidad, String nombre) {
+        this.vida = vida;
+        this.ataque = ataque;
+        this.defensa = defensa;
+        this.velocidad = velocidad;
+        this.nombre = nombre;
+    }
+
+    // 📚 Setters y Getters
+
+    public abstract void interactuar();
+    
+    public abstract void atacar(PersonajeModel enemigo);
+
+    public abstract void escapar(PersonajeModel enemigo);
 }
 `}
 </JavaBlock>
+
+<Admonition type="note">
+Estás poniendo <Highlight color="green">PersonajeModel enemigo</Highlight> como <Highlight color="green">parámetro</Highlight> en tus métodos <Highlight color="green">atacar</Highlight> y <Highlight color="green">escapar</Highlight> por las siguientes razones:
+- <Highlight color="green">Razón Principal</Highlight>: El <Highlight color="green">Método Necesita un Objetivo</Highlight>
+El método <Highlight color="green">atacar()</Highlight> no es una <Highlight color="green">acción</Highlight> que se realiza en el <Highlight color="green">vacío</Highlight>; siempre se ataca a algo o a alguien. Al requerir un <Highlight color="green">PersonajeModel enemigo</Highlight> como parámetro, estás especificando quién es el <Highlight color="green">objetivo</Highlight> de la acción.
+</Admonition>
