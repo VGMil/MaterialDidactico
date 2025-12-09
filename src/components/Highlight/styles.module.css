@@ -1,0 +1,45 @@
+.highlight {
+    display: inline-block;
+    padding: 0 0.2rem;
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: bold;
+    border-bottom: 2px solid var(--highlight-color);
+    background: linear-gradient(to bottom, transparent 40%, var(--highlight-bg) 100%);
+    color: var(--highlight-text);
+    margin: 0 2px;
+}
+
+.pink {
+    --highlight-color: #ff00ff;
+    --highlight-bg: rgba(255, 0, 255, 0.2);
+    --highlight-text: #ff80ff;
+    /* Lighter pink for legibility */
+}
+
+.blue {
+    --highlight-color: #00ffff;
+    --highlight-bg: rgba(0, 255, 255, 0.2);
+    --highlight-text: #e0ffff;
+    /* Light cyan */
+}
+
+.green {
+    --highlight-color: #00ff00;
+    --highlight-bg: rgba(0, 255, 0, 0.2);
+    --highlight-text: #ccffcc;
+    /* Light green */
+}
+
+.yellow {
+    --highlight-color: #ffff00;
+    --highlight-bg: rgba(255, 255, 0, 0.2);
+    --highlight-text: #ffffcc;
+    /* Light yellow */
+}
+
+.red {
+    --highlight-color: #ff0000;
+    --highlight-bg: rgba(255, 0, 0, 0.2);
+    --highlight-text: #ffcccc;
+    /* Light red */
+}

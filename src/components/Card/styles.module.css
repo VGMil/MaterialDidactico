@@ -1,0 +1,38 @@
+.card {
+    --neon-color: #d325d3;
+    /* Default pink */
+    background-color: #1a1b1e;
+    border: 2px solid var(--neon-color);
+    box-shadow: 0 0 10px var(--neon-color), inset 0 0 5px rgba(211, 37, 211, 0.2);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 1.1rem;
+}
+
+.card:hover {
+    box-shadow: 0 0 20px var(--neon-color), inset 0 0 10px rgba(211, 37, 211, 0.4);
+}
+
+.pink {
+    --neon-color: #ff00ff;
+}
+
+.blue {
+    --neon-color: #00ffff;
+}
+
+.green {
+    --neon-color: #00ff00;
+}
+
+.yellow {
+    --neon-color: #ffff00;
+}
+
+.red {
+    --neon-color: #ff0000;
+}

@@ -1,0 +1,22 @@
+.titleContainer {
+    font-family: 'VT323', monospace;
+    color: #ffb000;
+    padding: 1rem;
+    border-radius: 4px;
+    font-size: 2rem;
+    display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+}
+
+.cursor {
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}

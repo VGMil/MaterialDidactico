@@ -1,0 +1,132 @@
+.container {
+    display: flex;
+    border: 2px solid #00ff00;
+    /* Green retro border */
+    border-radius: 8px;
+    background-color: #0d1117;
+    overflow: hidden;
+    font-family: 'Chakra Petch', sans-serif;
+    height: 600px;
+    /* Fixed height for scrolling */
+    margin: 2rem 0;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+}
+
+.sidebar {
+    width: 300px;
+    background-color: #161b22;
+    border-right: 1px solid #30363d;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.sidebarHeader {
+    padding: 1rem;
+    background-color: #21262d;
+    color: #00ff00;
+    font-weight: bold;
+    border-bottom: 1px solid #30363d;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.menuList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menuItem {
+    cursor: pointer;
+    padding: 0.8rem 1rem;
+    color: #c9d1d9;
+    border-bottom: 1px solid #21262d;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+
+}
+
+.menuItem:hover {
+    background-color: rgba(0, 255, 0, 0.1);
+    color: #00ff00;
+}
+
+.activeItem {
+    background-color: rgba(0, 255, 0, 0.2);
+    color: #00ff00;
+    border-left: 4px solid #00ff00;
+}
+
+.previewArea {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+    background-color: #0d1117;
+    color: #c9d1d9;
+}
+
+/* Custom scrollbar */
+.sidebar::-webkit-scrollbar,
+.previewArea::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track,
+.previewArea::-webkit-scrollbar-track {
+    background: #0d1117;
+}
+
+.sidebar::-webkit-scrollbar-thumb,
+.previewArea::-webkit-scrollbar-thumb {
+    background: #30363d;
+    border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover,
+.previewArea::-webkit-scrollbar-thumb:hover {
+    background: #00ff00;
+}
+
+.folderHeader {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    color: #8b949e;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+}
+
+.folderHeader:hover {
+    color: #c9d1d9;
+}
+
+.folderContent {
+    margin-left: 0.5rem;
+    /* Indentation for nesting */
+    border-left: 1px solid #30363d;
+}
+
+.fileItem {
+    cursor: pointer;
+    padding: 0.4rem 1rem;
+    color: #c9d1d9;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.fileItem:hover {
+    background-color: rgba(0, 255, 0, 0.1);
+    color: #00ff00;
+}
+
+.activeFile {
+    background-color: rgba(0, 255, 0, 0.2);
+    color: #00ff00;
+    border-right: 2px solid #00ff00;
+}

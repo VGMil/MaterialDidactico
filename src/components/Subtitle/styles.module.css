@@ -1,0 +1,56 @@
+.subtitleWrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    --subtitle-color: #efff00;
+    /* Default yellow */
+}
+
+.subtitleContainer {
+    font-family: 'Chakra Petch', sans-serif;
+    color: var(--subtitle-color);
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    margin-bottom: 0.5rem;
+}
+
+.bracket {
+    color: var(--subtitle-color);
+}
+
+.text {
+    text-transform: uppercase;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid var(--subtitle-color);
+    width: 100%;
+    margin: 0;
+    opacity: 0.8;
+}
+
+.pink {
+    --subtitle-color: #ff00ff;
+}
+
+.blue {
+    --subtitle-color: #00ffff;
+}
+
+.green {
+    --subtitle-color: #00ff00;
+}
+
+.yellow {
+    --subtitle-color: #ffff00;
+}
+
+.red {
+    --subtitle-color: #ff0000;
+}
