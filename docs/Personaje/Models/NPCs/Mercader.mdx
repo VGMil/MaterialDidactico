@@ -1,13 +1,45 @@
 import JavaBlock from '@site/src/components/JavaBlock';
+import Highlight from '@site/src/components/Highlight';
 
 # Mercader
 
-Permite la interacción de compra/venta y gestión de inventario.
+La declaración <Highlight color="green">public class Mercader extends PersonajeModel</Highlight> <br/> indica que Mercader hereda todos los <Highlight color="green">atributos y métodos</Highlight> de la clase abstracta <Highlight color="green">PersonajeModel</Highlight>. Esto garantiza que todo Mercader tenga las propiedades esenciales de un <Highlight color="green">personaje</Highlight> (Vida, Ataque, Defensa, etc.).
 
-<JavaBlock title="[NombreProyecto].Models.NPCs.Mercader">
+<JavaBlock title="package [NombreProyecto].Personaje.Models.NPCs">
 {`
-public class Mercader extends PersonajeModel {
-    // Implementación pendiente
+import Personaje.Models.PersonajeModel;
+
+public class Mercader extends PersonajeModel { 
+    
+    private static final int MercaderVida = 500; 
+    private static final int MercaderAtaque = 10;
+    private static final int MercaderDefensa = 50; // Tiene buena armadura (guardaespaldas invisibles)
+    private static final int MercaderVelocidad = 40;
+
+    public Mercader(String nombre) {
+    // Llama al constructor de la superclase (PersonajeModel)
+        super(MercaderVida, MercaderAtaque, MercaderDefensa, MercaderVelocidad, nombre);
+    }   
+
+    @Override
+    public void interactuar() {
+        System.out.println(this.getNombre() + ": 'Tengo las mejores mercancías. ¿Te interesa un intercambio?'");
+    }
+    @Override
+    public void atacar(PersonajeModel enemigo) {
+        System.out.println(this.getNombre() + " arroja una bolsa de monedas pesada a " + enemigo.getNombre() + "!");
+        
+        int dañoInfligido = 10;
+        enemigo.setVida(enemigo.getVida() - dañoInfligido);
+        
+        System.out.println("¡El dinero duele! (" + dañoInfligido + " daño)");
+    }
+
+    @Override
+    public void escapar(PersonajeModel enemigo) {
+        System.out.println(this.getNombre() + " soborna a " + enemigo.getNombre() + " para que le deje irse y huye.");
+    }
+
 }
 `}
 </JavaBlock>

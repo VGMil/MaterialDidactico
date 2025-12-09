@@ -1,13 +1,46 @@
 import JavaBlock from '@site/src/components/JavaBlock';
+import Highlight from '@site/src/components/Highlight';
 
 # Ciudadano
 
-Personaje pasivo del entorno, centrado en interacciones de diálogo.
+La declaración <Highlight color="green">public class Ciudadano extends PersonajeModel</Highlight> <br/> indica que Ciudadano hereda todos los <Highlight color="green">atributos y métodos</Highlight> de la clase abstracta <Highlight color="green">PersonajeModel</Highlight>. Esto garantiza que todo Ciudadano tenga las propiedades esenciales de un <Highlight color="green">personaje</Highlight> (Vida, Ataque, Defensa, etc.).
 
-<JavaBlock title="[NombreProyecto].Models.NPCs.Ciudadano">
+<JavaBlock title="package [NombreProyecto].Personaje.Models.NPCs">
 {`
-public class Ciudadano extends PersonajeModel {
-    // Implementación pendiente
+import Personaje.Models.PersonajeModel;
+
+public class Ciudadano extends PersonajeModel { 
+    
+    private static final int CiudadanoVida = 100; 
+    private static final int CiudadanoAtaque = 5;
+    private static final int CiudadanoDefensa = 5;
+    private static final int CiudadanoVelocidad = 30;
+
+    public Ciudadano(String nombre) {
+    // Llama al constructor de la superclase (PersonajeModel)
+        super(CiudadanoVida, CiudadanoAtaque, CiudadanoDefensa, CiudadanoVelocidad, nombre);
+    }   
+
+    @Override
+    public void interactuar() {
+        System.out.println(this.getNombre() + ": '¡Qué buen día hace hoy en el reino!'");
+    }
+    @Override
+    public void atacar(PersonajeModel enemigo) {
+        System.out.println(this.getNombre() + " intenta defenderse torpemente de " + enemigo.getNombre() + "!");
+        
+        // Daño mínimo, casi simbólico
+        int dañoInfligido = 1;
+        enemigo.setVida(enemigo.getVida() - dañoInfligido);
+        
+        System.out.println("¡Apenas ha hecho un rasguño (" + dañoInfligido + " daño)!");
+    }
+
+    @Override
+    public void escapar(PersonajeModel enemigo) {
+        System.out.println(this.getNombre() + " corre gritando por ayuda lejos de " + enemigo.getNombre());
+    }
+
 }
 `}
 </JavaBlock>

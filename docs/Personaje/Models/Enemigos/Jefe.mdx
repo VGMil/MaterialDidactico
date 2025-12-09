@@ -1,13 +1,58 @@
 import JavaBlock from '@site/src/components/JavaBlock';
+import Highlight from '@site/src/components/Highlight';
 
 # Jefe
 
-Enemigo complejo con patrones de ataque avanzados y alta resistencia.
+La declaración <Highlight color="green">public class Jefe extends PersonajeModel</Highlight> <br/> indica que Jefe hereda todos los <Highlight color="green">atributos y métodos</Highlight> de la clase abstracta <Highlight color="green">PersonajeModel</Highlight>. Esto garantiza que todo Jefe tenga las propiedades esenciales de un <Highlight color="green">personaje</Highlight> (Vida, Ataque, Defensa, etc.).
 
-<JavaBlock title="[NombreProyecto].Models.Enemigos.Jefe">
+<JavaBlock title="package [NombreProyecto].Personaje.Models.Enemigos">
 {`
-public class Jefe extends PersonajeModel {
-    // Implementación pendiente
+import Personaje.Models.PersonajeModel;
+
+public class Jefe extends PersonajeModel { 
+    
+    private static final int JefeVida = 5000; 
+    private static final int JefeAtaque = 120;
+    private static final int JefeDefensa = 100;
+    private static final int JefeVelocidad = 40;
+
+    public Jefe(String nombre) {
+    // Llama al constructor de la superclase (PersonajeModel)
+        super(JefeVida, JefeAtaque, JefeDefensa, JefeVelocidad, nombre);
+    }   
+
+    @Override
+    public void interactuar() {
+        System.out.println("El Jefe " + this.getNombre() + " ruge con furia, la tierra tiembla.");
+    }
+    @Override
+    public void atacar(PersonajeModel enemigo) {
+        // 1. Imprimimos el mensaje de acción
+        System.out.println("El Jefe " + this.getNombre() + " asesta un golpe devastador a "
+        + enemigo.getNombre() + "!");
+
+        // 2. Calculamos el daño efectivo (Daño explosivo)
+        int dañoInfligido = this.ataque - (enemigo.getDefensa() / 2); // Penetra armadura
+    
+        // Aseguramos que el daño sea al menos 1, no negativo
+        if (dañoInfligido < 1) {
+            dañoInfligido = 1; 
+        }
+
+        // 3. Aplicamos el daño (Restamos el daño a la vida del enemigo)
+        enemigo.setVida(enemigo.getVida() - dañoInfligido);
+
+        // 4. Imprimimos el resultado de la acción
+        System.out.println("¡Ha infligido " + dañoInfligido +
+         " puntos de daño crítico!");
+        System.out.println("La vida restante de " + enemigo.getNombre() +
+         " es: " + enemigo.getVida());
+    }
+
+    @Override
+    public void escapar(PersonajeModel enemigo) {
+        System.out.println("¡" + this.getNombre() + " no huye de nadie! ¡Pelea hasta la muerte!");
+    }
 
 }
 `}
