@@ -12,6 +12,7 @@ import { FileItem } from './components/FileItem';
 interface CodePreviewerProps {
     tree: FileNode;
     title?: string;
+    defaultExpanded?: string[];
 }
 
 /**
@@ -53,9 +54,13 @@ const buildVisibleList = (
  * Componente principal CodePreviewer.
  * Muestra un explorador de archivos interactivo y un panel de visualización de código.
  */
-export default function CodePreviewer({ tree, title = "EXPLORADOR" }: CodePreviewerProps): React.ReactElement {
+export default function CodePreviewer({ tree, title = "EXPLORADOR", defaultExpanded = [] }: CodePreviewerProps): React.ReactElement {
     const [currentPath, setCurrentPath] = useState<string | null>(null);
-    const [expandedIds, setExpandedIds] = useState<Set<string>>(() => new Set([tree.name]));
+    const [expandedIds, setExpandedIds] = useState<Set<string>>(() => {
+        const initial = new Set([tree.name]);
+        defaultExpanded.forEach(id => initial.add(id));
+        return initial;
+    });
 
     const handleSelect = (path: string) => {
         setCurrentPath(path);
@@ -77,7 +82,7 @@ export default function CodePreviewer({ tree, title = "EXPLORADOR" }: CodePrevie
         <div className={styles.container}>
             <div className={styles.sidebar}>
                 <div className={styles.sidebarHeader}>{title}</div>
-                <div style={{ paddingBottom: '1rem' }}>
+                <div className={styles.fileList}>
                     {visibleItems.map((item) => {
                         if (item.node.type === 'folder') {
                             return (
@@ -96,6 +101,7 @@ export default function CodePreviewer({ tree, title = "EXPLORADOR" }: CodePrevie
                                 key={item.id}
                                 node={item.node}
                                 level={item.level}
+                                id={item.id}
                                 isSelected={currentPath === item.node.path}
                                 onSelect={handleSelect}
                             />

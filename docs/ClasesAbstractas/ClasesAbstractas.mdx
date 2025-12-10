@@ -11,13 +11,51 @@ import Highlight from '@site/src/components/Highlight';
 import CodePreviewer from '@site/src/components/CodePreviewer';
 import personajeStructure from './data/personajeStructure.json';
 import CodeBlock from '@theme/CodeBlock';
+import Tour from '@site/src/components/Tour';
+
+export const tourSteps = [
+  {
+    target: '#tour-concepto',
+    content: 'Comencemos entendiendo por qué necesitamos clases abstractas: para poner orden y reglas en nuestro mundo.',
+    disableBeacon: true,
+  },
+  {
+    target: '#tour-personaje',
+    content: 'La clase Personaje es el "Contrato". Obliga a que todos sepan atacar e interactuar, pero no dice CÓMO.',
+  },
+  {
+    target: '#tour-implementacion',
+    content: 'Aquí es donde ocurre la magia: cada clase hija (Guerrero, Mercader) cumple el contrato a su manera única.',
+  },
+  {
+    target: '#tour-estructura',
+    content: 'Esta es la estructura final de datos que tendrán nuestros personajes en el código.',
+  },
+  {
+    target: '[data-node-id="Personaje (Paquete Base)/Models"]',
+    content: 'En Models definimos los datos: vida, maná, y las clases específicas como Jugadores y Enemigos.',
+  },
+  {
+    target: '[data-node-id="Personaje (Paquete Base)/Controllers"]',
+    content: 'En Controllers definimos la lógica: cómo se comporta el personaje, cómo calcula el daño, etc.',
+  },
+  {
+    target: '[data-node-id="Personaje (Paquete Base)/Views"]',
+    content: 'En Views (Vistas) manejaremos lo que el usuario ve, como menús o mensajes de consola.',
+  },
+  {
+    target: '[data-node-id="Personaje (Paquete Base)/Models/PersonajeModel.java"]',
+    content: 'PersonajeModel.java es la definición principal. Aquí están los atributos abstractos que todos heredan.',
+  },
+];
 
 <Title>JAVA_PROTOCOL_V1.0 - Clases Abstractas</Title>
+<Tour steps={tourSteps} />
 
 {/* =================================================================== */}
 {/* Bloque 0 */}
 {/* =================================================================== */}
-<Card color="blue">
+<Card id="tour-concepto" color="blue">
     <Subtitle number="00" color="blue">CONCEPTO: ¿QUÉ ES UNA CLASE ABSTRACTA?</Subtitle>
     Estamos construyendo un **videojuego de rol (RPG)**.<br/>
     Usamos algo llamado "<Highlight color="blue">clases abstractas</Highlight>" porque nos ayudan a que el juego tenga una **base muy organizada y fuerte**.<br/>
@@ -30,7 +68,7 @@ import CodeBlock from '@theme/CodeBlock';
 {/* =================================================================== */}
 {/* Bloque 1 */}
 {/* =================================================================== */}
-<Card color="yellow">
+<Card id="tour-personaje" color="yellow">
     <Subtitle number="01" color="yellow">El Contrato: La clase Personaje</Subtitle>
     La clase <Highlight color="yellow">Personaje</Highlight> sirve como el **contrato fundamental** para todas las **entidades vivas y activas** en el mundo del juego.<br/>
     
@@ -44,7 +82,7 @@ import CodeBlock from '@theme/CodeBlock';
 {/* =================================================================== */}
 {/* Bloque 2 */}
 {/* =================================================================== */}
-<Card color="pink">
+<Card id="tour-implementacion" color="pink">
     <Subtitle number="02" color="pink">Implementación de la clase Personaje</Subtitle>
     Las clases concretas (Guerrero, Mercader, Jefe, etc.) <Highlight color="pink">extienden Personaje</Highlight>, convirtiéndose en objetos hijas que pueden ser instanciables del juego. 
     
@@ -84,8 +122,15 @@ import CodeBlock from '@theme/CodeBlock';
 {/* =================================================================== */}
 {/* Bloque 3 */}
 {/* =================================================================== */}
-<Card color="green">
+<Card id="tour-estructura" color="green">
     <Subtitle number="02" color="green">Estructura de todos los personajes</Subtitle>    
-    <CodePreviewer tree={personajeStructure} />
+    <CodePreviewer 
+        tree={personajeStructure} 
+        defaultExpanded={[
+            'Personaje (Paquete Base)/Models',
+            'Personaje (Paquete Base)/Controllers',
+            'Personaje (Paquete Base)/Views'
+        ]}
+    />
 
 </Card>

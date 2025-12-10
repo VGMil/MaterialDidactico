@@ -3,14 +3,14 @@ import styles from './styles.module.css';
 
 type NeonColor = 'pink' | 'blue' | 'green' | 'yellow' | 'red';
 
-interface CardProps {
+interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
     children: ReactNode;
     color?: NeonColor;
 }
 
-export default function Card({ children, color = 'pink' }: CardProps): React.ReactElement {
+export default function Card({ children, color = 'pink', className, ...props }: CardProps): React.ReactElement {
     return (
-        <div className={`${styles.card} ${styles[color]}`}>
+        <div className={`${styles.card} ${styles[color]} ${className || ''}`} {...props}>
             {children}
         </div>
     );

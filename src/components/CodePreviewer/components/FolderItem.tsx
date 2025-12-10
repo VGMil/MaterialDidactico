@@ -26,6 +26,7 @@ export const FolderItem = ({ node, level, id, isOpen, onToggle }: FolderItemProp
     return (
         <div
             className={styles.folderHeader}
+            data-node-id={id}
             onClick={() => onToggle(id)}
             style={{ paddingLeft: `${level * 15 + 10}px` }}
         >

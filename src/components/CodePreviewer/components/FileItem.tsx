@@ -7,6 +7,7 @@ import { getIcon } from '../utils';
 interface FileItemProps {
     node: FileNode;
     level: number;
+    id: string;
     isSelected: boolean;
     onSelect: (path: string) => void;
 }
@@ -16,16 +17,18 @@ interface FileItemProps {
  * 
  * @param node - El nodo del archivo.
  * @param level - Nivel de profundidad para el padding.
+ * @param id - Identificador único del archivo.
  * @param isSelected - Si el archivo está actualmente seleccionado.
  * @param onSelect - Función para seleccionar el archivo.
  */
-export const FileItem = ({ node, level, isSelected, onSelect }: FileItemProps) => {
+export const FileItem = ({ node, level, id, isSelected, onSelect }: FileItemProps) => {
     const defaultFileIcon = <LucideIcons.File size={16} />;
     const iconElement = getIcon(node.icon);
 
     return (
         <div
             className={`${styles.fileItem} ${isSelected ? styles.activeFile : ''}`}
+            data-node-id={id}
             onClick={() => node.path && onSelect(node.path)}
             style={{ paddingLeft: `${level * 15 + 10}px` }}
         >
