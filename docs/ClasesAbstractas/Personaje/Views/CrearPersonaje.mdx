@@ -1,0 +1,111 @@
+import JavaBlock from '@site/src/components/JavaBlock';
+import Highlight from '@site/src/components/Highlight';
+
+# CrearPersonaje
+
+La clase <Highlight color="blue">CrearPersonaje</Highlight> ha sido refactorizada para seguir el **Principio de Responsabilidad Única**. En lugar de tener un método gigante que hace todo, hemos dividido la lógica en **pequeños métodos privados** que se encargan de una tarea específica (pedir nombre, elegir clase, mostrar ficha).
+
+Esto hace que el código sea mucho más **fácil de leer** y **mantener**.
+
+<JavaBlock title="package [NombreProyecto].Personaje.Views">
+{`
+package Personaje.Views;
+
+import Personaje.Controllers.PersonajeController;
+import Personaje.Models.PersonajeModel;
+
+public class CrearPersonaje extends Menu {
+
+    private final PersonajeController controller;
+
+    public CrearPersonaje() {
+        super();
+        this.controller = new PersonajeController();
+    }
+
+    @Override
+    public void mostrarMenu() {
+        System.out.println("\\n=== MENU CREACIÓN ===");
+        System.out.println("1. Crear Nuevo Personaje");
+        System.out.println("2. Volver");
+        
+        int opcion = leerOpcion();
+        
+        if (opcion == 1) {
+            iniciarProcesoCreacion(); // Delegamos el flujo a un método orquestador
+        }
+    }
+
+    /**
+     * Método ORQUESTADOR:
+     * Su única responsabilidad es dirigir el tráfico: llama a pedir nombre,
+     * pedir clase, llamar al controller, y finalmente mostrar resultados.
+     */
+    private void iniciarProcesoCreacion() {
+        // 1. Obtener datos
+        String nombre = solicitarNombre();
+        String tipo = solicitarTipoClase();
+
+        // Si el usuario canceló o eligió mal, detenemos.
+        if (tipo == null) return;
+
+        // 2. Procesar datos (Llamada al Controller)
+        String mensajeResultado = controller.crearPersonaje(nombre, tipo);
+        System.out.println(">> " + mensajeResultado);
+
+        // 3. Mostrar resultados (Feedback visual)
+        if (controller.getPersonaje() != null) {
+            mostrarFichaTecnica(controller.getPersonaje());
+        }
+    }
+
+    /**
+     * Responsabilidad: Interacción pura con usuario para el nombre
+     */
+    private String solicitarNombre() {
+        System.out.println("\\n--- Configuración de Identidad ---");
+        return leerTexto("Ingrese el nombre de su héroe");
+    }
+
+    /**
+     * Responsabilidad: Mostrar catálogo de clases y traducir la opción numérica a String
+     */
+    private String solicitarTipoClase() {
+        System.out.println("\\n--- Selección de Clase ---");
+        System.out.println("1. Guerrero  [Alta Defensa]");
+        System.out.println("2. Mago      [Ataque Mágico]"); // Nota: Aunque ahora es físico bajo, conceptualmente es mago
+        System.out.println("3. Arquero   [Alta Velocidad]");
+        System.out.println("4. Curandero [Soporte]");
+        System.out.println("5. Cancelar");
+
+        int opcion = leerOpcion();
+        
+        switch (opcion) {
+            case 1: return "Guerrero";
+            case 2: return "Mago";
+            case 3: return "Arquero";
+            case 4: return "Curandero";
+            default: 
+                if (opcion != 5) System.out.println("Opción desconocida.");
+                return null;
+        }
+    }
+
+    /**
+     * Responsabilidad: Únicamente VISUALIZAR los datos del objeto
+     */
+    private void mostrarFichaTecnica(PersonajeModel p) {
+        System.out.println("\\n==============================");
+        System.out.println("       FICHA DE HÉROE");
+        System.out.println("==============================");
+        System.out.println(" Nombre:  " + p.getNombre());
+        System.out.println(" Salud:   " + p.getVida());
+        System.out.println(" Ataque:  " + p.getAtaqueFisico()); // Usando el getter actualizado
+        System.out.println(" Defensa: " + p.getDefensa());
+        System.out.println("==============================\\n");
+        
+        leerTexto("Presione Enter para continuar...");
+    }
+}
+`}
+</JavaBlock>

@@ -1,0 +1,71 @@
+import JavaBlock from '@site/src/components/JavaBlock';
+import Highlight from '@site/src/components/Highlight';
+
+# PersonajeController
+
+El <Highlight color="blue">PersonajeController</Highlight> actúa como el <Highlight color="blue">cerebro</Highlight> que gestiona la creación de personajes. 
+Hemos mejorado el **manejo del parámetro 'tipo'** usando `equalsIgnoreCase` para que no sea sensible a mayúsculas ("mago" vs "Mago") y agregado validaciones más claras.
+
+<JavaBlock title="package [NombreProyecto].Personaje.Controllers">
+{`
+package Personaje.Controllers;
+
+import Personaje.Models.PersonajeModel;
+import Personaje.Models.Jugables.*;
+
+public class PersonajeController {
+
+    private PersonajeModel personaje;
+
+    public PersonajeController() {
+        this.personaje = null;
+    }
+
+    /**
+     * Intenta crear un personaje validando las reglas de negocio.
+     * @param nombre El nombre del héroe.
+     * @param tipo El tipo de clase (ej. "Guerrero", "Mago"). No distingue mayúsculas.
+     * @return Mensaje de éxito o error.
+     */
+    public String crearPersonaje(String nombre, String tipo) {
+        
+        // Regla 1: Nombre obligatorio
+        if (nombre == null || nombre.length() == 0) {
+            return "Error: El nombre no puede estar vacío.";
+        }
+
+        // Regla 2: Un solo personaje a la vez
+        if (this.personaje != null) {
+            return "Error: Ya existe un personaje creado (" + personaje.getNombre() + ").";
+        }
+
+        // Normalizamos el tipo para evitar errores de mayúsculas/minúsculas
+        String tipoNormalizado = tipo.trim();
+
+        // Regla 3 & Fábrica: Validación y Creación en un solo paso
+        switch (tipoNormalizado.toLowerCase()) {
+            case "guerrero":
+                this.personaje = new Guerrero(nombre);
+                break;
+            case "arquero":
+                this.personaje = new Arquero(nombre);
+                break;
+            case "mago":
+                this.personaje = new Mago(nombre);
+                break;
+            case "curandero":
+                this.personaje = new Curandero(nombre);
+                break;
+            default:
+                return "Error: Clase '" + tipo + "' no reconocida. Clases válidas: Guerrero, Arquero, Mago, Curandero.";
+        }
+        
+        return "¡Éxito! Se ha creado un " + tipo + " llamado " + this.personaje.getNombre();
+    }
+
+    public PersonajeModel getPersonaje() {
+        return personaje;
+    }
+}
+`}
+</JavaBlock>

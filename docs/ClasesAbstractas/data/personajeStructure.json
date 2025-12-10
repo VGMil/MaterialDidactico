@@ -4,19 +4,6 @@
     "icon": "Folder",
     "children": [
         {
-            "name": "Controllers",
-            "type": "folder",
-            "icon": "Folder",
-            "children": [
-                {
-                    "name": "PersonajeController.java",
-                    "type": "file",
-                    "path": "Personaje/Controllers/PersonajeController",
-                    "icon": "Coffee"
-                }
-            ]
-        },
-        {
             "name": "Models",
             "type": "folder",
             "icon": "Folder",
@@ -24,7 +11,7 @@
                 {
                     "name": "PersonajeModel.java",
                     "type": "file",
-                    "path": "Personaje/Models/PersonajeModel",
+                    "path": "ClasesAbstractas/Personaje/Models/PersonajeModel",
                     "icon": "Lock"
                 },
                 {
@@ -35,25 +22,25 @@
                         {
                             "name": "Arquero.java",
                             "type": "file",
-                            "path": "Personaje/Models/Jugables/Arquero",
+                            "path": "ClasesAbstractas/Personaje/Models/Jugables/Arquero",
                             "icon": "Target"
                         },
                         {
                             "name": "Curandero.java",
                             "type": "file",
-                            "path": "Personaje/Models/Jugables/Curandero",
+                            "path": "ClasesAbstractas/Personaje/Models/Jugables/Curandero",
                             "icon": "Heart"
                         },
                         {
                             "name": "Guerrero.java",
                             "type": "file",
-                            "path": "Personaje/Models/Jugables/Guerrero",
+                            "path": "ClasesAbstractas/Personaje/Models/Jugables/Guerrero",
                             "icon": "Shield"
                         },
                         {
                             "name": "Mago.java",
                             "type": "file",
-                            "path": "Personaje/Models/Jugables/Mago",
+                            "path": "ClasesAbstractas/Personaje/Models/Jugables/Mago",
                             "icon": "Sparkles"
                         }
                     ]
@@ -66,13 +53,13 @@
                         {
                             "name": "Tropa.java",
                             "type": "file",
-                            "path": "Personaje/Models/Enemigos/Tropa",
+                            "path": "ClasesAbstractas/Personaje/Models/Enemigos/Tropa",
                             "icon": "Ghost"
                         },
                         {
                             "name": "Jefe.java",
                             "type": "file",
-                            "path": "Personaje/Models/Enemigos/Jefe",
+                            "path": "ClasesAbstractas/Personaje/Models/Enemigos/Jefe",
                             "icon": "Crown"
                         }
                     ]
@@ -85,16 +72,29 @@
                         {
                             "name": "Mercader.java",
                             "type": "file",
-                            "path": "Personaje/Models/NPCs/Mercader",
+                            "path": "ClasesAbstractas/Personaje/Models/NPCs/Mercader",
                             "icon": "Coins"
                         },
                         {
                             "name": "Ciudadano.java",
                             "type": "file",
-                            "path": "Personaje/Models/NPCs/Ciudadano",
+                            "path": "ClasesAbstractas/Personaje/Models/NPCs/Ciudadano",
                             "icon": "Home"
                         }
                     ]
+                }
+            ]
+        },
+        {
+            "name": "Controllers",
+            "type": "folder",
+            "icon": "Folder",
+            "children": [
+                {
+                    "name": "PersonajeController.java",
+                    "type": "file",
+                    "path": "ClasesAbstractas/Personaje/Controllers/PersonajeController",
+                    "icon": "Coffee"
                 }
             ]
         },
@@ -106,13 +106,13 @@
                 {
                     "name": "CrearPersonaje.java",
                     "type": "file",
-                    "path": "Personaje/Views/CrearPersonaje",
+                    "path": "ClasesAbstractas/Personaje/Views/CrearPersonaje",
                     "icon": "Coffee"
                 },
                 {
                     "name": "Menu.java",
                     "type": "file",
-                    "path": "Personaje/Views/Menu",
+                    "path": "ClasesAbstractas/Personaje/Views/Menu",
                     "icon": "Lock"
                 }
             ]

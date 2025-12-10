@@ -1,0 +1,52 @@
+import JavaBlock from '@site/src/components/JavaBlock';
+import Admonition from '@theme/Admonition';
+import Highlight from '@site/src/components/Highlight';
+
+# Menu
+
+La clase <Highlight color="blue">Menu</Highlight> proporciona la funcionalidad base para la lectura de datos.
+Hemos mejorado la gestión del **Scanner** para evitar errores comunes de lectura (como saltarse inputs de texto), manteniendo el código simple y directo sin uso de estructuras complejas.
+
+<JavaBlock title="package [NombreProyecto].Personaje.Views">
+{`
+package Personaje.Views;
+
+import java.util.Scanner;
+
+public abstract class Menu {
+
+    // Protected facilita que las subclases usen el scanner si lo necesitan
+    protected Scanner scanner;
+
+    public Menu() {
+        this.scanner = new Scanner(System.in);
+    }
+
+    public abstract void mostrarMenu();
+
+    /**
+     * Lee un número entero de la consola.
+     * Incluye una limpieza automática del scanner para evitar problemas
+     * al leer texto posteriormente.
+     */
+    public int leerOpcion() {
+        System.out.print("> Seleccione una opción: ");
+        int opcion = scanner.nextInt();
+        
+        // Importante: Consumimos el "Enter" que queda pendiente en el buffer
+        scanner.nextLine(); 
+        
+        return opcion;
+    }
+
+    /**
+     * Lee una línea completa de texto.
+     * Gracias a la limpieza en leerOpcion(), este método funciona de forma directa.
+     */
+    public String leerTexto(String mensaje) {
+        System.out.print("> " + mensaje + ": ");
+        return scanner.nextLine();
+    }
+}
+`}
+</JavaBlock>
