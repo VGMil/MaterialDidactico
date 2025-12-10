@@ -46,6 +46,17 @@ export default function TechList({ items }: TechListProps): React.JSX.Element {
                             <p className={styles.description}>{item.description}</p>
 
                             <div className={styles.footer}>
+                                {item.progress !== undefined && (
+                                    <div className={styles.progressBar} title={`${item.progress}% Complete`}>
+                                        <div
+                                            className={styles.progressFill}
+                                            style={{
+                                                '--progress-width': `${item.progress}%`,
+                                                backgroundColor: 'var(--bg-end)'
+                                            } as React.CSSProperties}
+                                        />
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>

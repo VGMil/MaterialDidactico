@@ -121,29 +121,32 @@
     color: #57606a;
 }
 
-/* Footer / Badge */
+/* Footer & Progress Bar */
 .footer {
     margin-top: auto;
+    min-height: 24px;
+    /* Ensure space if empty */
+    display: flex;
+    align-items: flex-end;
 }
 
-.badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background-color: #21262d;
-    border: 1px solid #30363d;
-    border-radius: 999px;
-    padding: 4px 12px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #8b949e;
-    text-transform: uppercase;
+.progressBar {
+    width: 100%;
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
 }
 
-[data-theme='light'] .badge {
-    background-color: #f6f8fa;
-    border-color: #d0d7de;
-    color: #57606a;
+[data-theme='light'] .progressBar {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.progressFill {
+    height: 100%;
+    width: var(--progress-width, 0%);
+    /* Color handled inline or via var */
+    transition: width 0.5s ease-out;
 }
 
 /* Color Themes for Headers */
