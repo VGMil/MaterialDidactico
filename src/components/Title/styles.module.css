@@ -1,6 +1,6 @@
 .titleContainer {
     font-family: 'VT323', monospace;
-    color: #ffb000;
+    color: var(--c-yellow);
     padding: 1rem;
     border-radius: 4px;
     font-size: 2rem;
@@ -18,5 +18,13 @@
 @keyframes blink {
     50% {
         opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .titleContainer {
+        font-size: 1.4rem;
+        word-break: break-word;
+        padding: 0.5rem;
     }
 }

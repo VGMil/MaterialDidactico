@@ -1,38 +1,65 @@
 .card {
-    --neon-color: #d325d3;
+    --neon-color: var(--c-pink);
     /* Default pink */
-    background-color: #1a1b1e;
+    background-color: var(--card-bg);
     border: 2px solid var(--neon-color);
-    box-shadow: 0 0 10px var(--neon-color), inset 0 0 5px rgba(211, 37, 211, 0.2);
+    box-shadow: 0 0 10px var(--neon-color), inset 0 0 5px rgba(var(--neon-color), 0.2);
+    /* Note: box-shadow with vars inside rgba might fail in standard CSS without calc or RGB vars, 
+       but for simplicity we'll just use the color directly. 
+       Actually, standard CSS colors in RGBA is not valid if variable holds hex.
+       For robustness, we will trust opacity simply on the shadow color or rely on the theme being dark/light enough.
+       Let's stick to the color itself for shadow to avoid complex RGB conversion logic in pure CSS for now,
+       or just use a solid shadow.
+    */
+    box-shadow: 0 0 10px var(--neon-color);
+
     border-radius: 12px;
     padding: 2rem;
     margin: 2rem 0;
-    color: #fff;
+    color: var(--card-text);
     transition: all 0.3s ease-in-out;
     font-family: 'Chakra Petch', sans-serif;
     font-size: 1.1rem;
 }
 
+@media (max-width: 768px) {
+    .card {
+        padding: 0.5rem;
+        margin: 1rem 0;
+        border: none;
+        box-shadow: none !important;
+        /* Force removal of shadow */
+        background-color: transparent;
+        /* Remove background */
+    }
+
+    /* Optional: Add a subtle separator instead of a full card box */
+    .card {
+        border-bottom: 1px solid var(--neon-color);
+        border-radius: 0;
+    }
+}
+
 .card:hover {
-    box-shadow: 0 0 20px var(--neon-color), inset 0 0 10px rgba(211, 37, 211, 0.4);
+    box-shadow: 0 0 20px var(--neon-color);
 }
 
 .pink {
-    --neon-color: #ff00ff;
+    --neon-color: var(--c-pink);
 }
 
 .blue {
-    --neon-color: #00ffff;
+    --neon-color: var(--c-blue);
 }
 
 .green {
-    --neon-color: #00ff00;
+    --neon-color: var(--c-green);
 }
 
 .yellow {
-    --neon-color: #ffff00;
+    --neon-color: var(--c-yellow);
 }
 
 .red {
-    --neon-color: #ff0000;
+    --neon-color: var(--c-red);
 }

@@ -19,26 +19,26 @@ import CodeBlock from '@theme/CodeBlock';
 {/* =================================================================== */}
 <Card color="blue">
     <Subtitle number="00" color="blue">CONCEPTO: ¿QUÉ ES UNA CLASE ABSTRACTA?</Subtitle>
-    Estamos construyendo un <Highlight color="blue">videojuego de rol (RPG)</Highlight>.<br/>
-    Usamos algo llamado "<Highlight color="blue">clases abstractas</Highlight>" porque nos ayudan a que el juego tenga una <Highlight color="blue">base muy organizada y fuerte</Highlight>.<br/>
+    Estamos construyendo un **videojuego de rol (RPG)**.<br/>
+    Usamos algo llamado "<Highlight color="blue">clases abstractas</Highlight>" porque nos ayudan a que el juego tenga una **base muy organizada y fuerte**.<br/>
     Así nos aseguramos de que todos los elementos importantes 
-    (como los <Highlight color="blue">personajes, monstruos e ítems</Highlight>)
-    sigan unas <Highlight color="blue">reglas básicas</Highlight> y tengan ciertas <Highlight color="blue">acciones obligatorias</Highlight>.<br/>
+    (como los personajes, monstruos e ítems)
+    sigan unas <Highlight color="blue">reglas básicas</Highlight> y tengan ciertas **acciones obligatorias**.<br/>
 
-    <Admonition type="note">¡Y esto hace que sea mucho más <Highlight color="blue">fácil arreglar o añadir cosas nuevas</Highlight> al juego en el <Highlight color="blue">futuro</Highlight>!</Admonition>
+    <Admonition type="note">¡Y esto hace que sea mucho más fácil arreglar o añadir cosas nuevas al juego en el futuro!</Admonition>
 </Card>
 {/* =================================================================== */}
 {/* Bloque 1 */}
 {/* =================================================================== */}
 <Card color="yellow">
     <Subtitle number="01" color="yellow">El Contrato: La clase Personaje</Subtitle>
-    La clase <Highlight color="yellow">Personaje</Highlight> sirve como el <Highlight color="yellow">contrato fundamental</Highlight> para todas las <Highlight color="yellow">entidades vivas y activas</Highlight> en el mundo del juego.<br/>
+    La clase <Highlight color="yellow">Personaje</Highlight> sirve como el **contrato fundamental** para todas las **entidades vivas y activas** en el mundo del juego.<br/>
     
-    <Admonition type="danger">No está destinada a ser instanciada; su propósito es <Highlight color="yellow">obligar a todas las subclases</Highlight> a implementar un <Highlight color="yellow">conjunto mínimo de funcionalidades</Highlight>.</Admonition>
+    <Admonition type="danger">No está destinada a ser instanciada; su propósito es <Highlight color="yellow">obligar a todas las subclases</Highlight> a implementar un conjunto mínimo de funcionalidades.</Admonition>
 
-    - Propósito: Establecer una estructura de datos común (ej. <Highlight color="red">salud</Highlight>, <Highlight color="blue">nombre</Highlight>, <Highlight color="green">nivel</Highlight>).
-    - Obligatoriedad de Comportamiento: Define <Highlight color="yellow">métodos abstractos</Highlight> (<Highlight color="red">atacar()</Highlight> y <Highlight color="green">interactuar()</Highlight>) que deben ser implementados por cada clase hija, asegurando que cualquier <Highlight color="yellow">personaje del juego</Highlight> sepa, al menos, cómo luchar y cómo hablar.
-    - Justificación de Abstracción: En la lógica del juego, un "<Highlight color="yellow">Personaje genérico</Highlight>" sin una especialidad (Guerrero, Mercader) es <Highlight color="yellow">inútil</Highlight>. La <Highlight color="yellow">abstracción</Highlight> fuerza la <Highlight color="yellow">especialización</Highlight>
+    - Propósito: Establecer una estructura de datos común (ej. salud, nombre, nivel).
+    - Obligatoriedad de Comportamiento: Define <Highlight color="yellow">métodos abstractos</Highlight> (<Highlight color="red">atacar()</Highlight> y <Highlight color="green">interactuar()</Highlight>) que deben ser implementados por cada clase hija, asegurando que cualquier personaje del juego sepa, al menos, cómo luchar y cómo hablar.
+    - Justificación de Abstracción: En la lógica del juego, un "Personaje genérico" sin una especialidad (Guerrero, Mercader) es inútil. La <Highlight color="yellow">abstracción</Highlight> fuerza la **especialización**
 </Card>
 
 {/* =================================================================== */}
@@ -46,12 +46,12 @@ import CodeBlock from '@theme/CodeBlock';
 {/* =================================================================== */}
 <Card color="pink">
     <Subtitle number="02" color="pink">Implementación de la clase Personaje</Subtitle>
-    Las clases concretas (<Highlight color="yellow">Guerrero</Highlight>, <Highlight color="green">Mercader</Highlight>, <Highlight color="red">Jefe</Highlight>, etc.) <Highlight color="pink">extienden Personaje</Highlight>, convirtiéndose en objetos hijas que pueden ser instanciables del juego. 
+    Las clases concretas (Guerrero, Mercader, Jefe, etc.) <Highlight color="pink">extienden Personaje</Highlight>, convirtiéndose en objetos hijas que pueden ser instanciables del juego. 
     
     <Admonition type="tip">
         Aquí es donde la definición abstracta se traduce en una acción real y única para cada tipo.
-    <div style={{justifySelf: 'center'}}>
-        <table>
+    <div style={{width: '100%', overflowX: 'auto'}}>
+        <table style={{width: '100%', minWidth: '600px'}}>
             <thead>
                 <tr>
                     <th style={{textAlign: 'center', fontWeight: 'bold', backgroundColor: '#333' , color: 'white'}}>Clase</th>

@@ -9,37 +9,66 @@
     margin: 0 2px;
 }
 
+/* 
+   To support hex variable opacity, we would ideally need --c-blue-rgb values.
+   Since we don't have them yet, we can't easily do rgba(var(--c-blue), 0.2).
+   
+   However, we can just use the colors directly effectively or distinct opacity vars.
+   For now, to fix the user's issue quickly, let's map them to the same vars
+   but we might lose the transparency effect on background if we just use the solid color.
+   
+   Wait, a trick: 'color-mix' is widely supported now? Or just use a lower opacity on the element?
+   No, gradient needs color.
+   
+   Let's stick to using the solid colors for text/border and maybe a hardcoded separate opacity for bg?
+   Actually, let's define the BG vars in custom.css properly next time.
+   But for now, I will use a simple hack: use the variable but maybe the background becomes solid or we accept it.
+   
+   Better plan: I will assume the user prefers the colors to match.
+   For the text inside highlight, it was Lighter in dark mode.
+   In light mode, it should be darker.
+   
+   Let's just use the main color for border and text, and a very light hardcoded shade for bg if possible,
+   or just use the variable for all and see.
+   
+   Actually, `current-color` with opacity?
+   
+   Let's try to reference the new variables. I will update the highlight logic to just use the main color 
+   for the border, and maybe the same color for text (or Card text).
+   
+   For the background gradient, it's tricky with Hex vars. 
+   I'll remove the gradient background for now and just use a simple underline effect 
+   OR use `color-mix` since we are in 2024/2025 context roughly.
+   
+   Let's try `color-mix(in srgb, var(--c-xxx), transparent 80%)`.
+*/
+
 .pink {
-    --highlight-color: #ff00ff;
-    --highlight-bg: rgba(255, 0, 255, 0.2);
-    --highlight-text: #ff80ff;
-    /* Lighter pink for legibility */
+    --highlight-color: var(--c-pink);
+    --highlight-bg: color-mix(in srgb, var(--c-pink), transparent 80%);
+    --highlight-text: var(--c-pink);
 }
 
 .blue {
-    --highlight-color: #00ffff;
-    --highlight-bg: rgba(0, 255, 255, 0.2);
-    --highlight-text: #e0ffff;
-    /* Light cyan */
+    --highlight-color: var(--c-blue);
+    --highlight-bg: color-mix(in srgb, var(--c-blue), transparent 80%);
+    --highlight-text: var(--c-blue);
 }
 
 .green {
-    --highlight-color: #00ff00;
-    --highlight-bg: rgba(0, 255, 0, 0.2);
-    --highlight-text: #ccffcc;
-    /* Light green */
+    --highlight-color: var(--c-green);
+    --highlight-bg: color-mix(in srgb, var(--c-green), transparent 80%);
+    --highlight-text: var(--c-green);
 }
 
 .yellow {
-    --highlight-color: #ffff00;
-    --highlight-bg: rgba(255, 255, 0, 0.2);
-    --highlight-text: #ffffcc;
-    /* Light yellow */
+    --highlight-color: var(--c-yellow);
+    --highlight-bg: color-mix(in srgb, var(--c-yellow), transparent 80%);
+    --highlight-text: var(--c-yellow);
 }
 
 .red {
-    --highlight-color: #ff0000;
-    --highlight-bg: rgba(255, 0, 0, 0.2);
-    --highlight-text: #ffcccc;
-    /* Light red */
+    --highlight-color: var(--c-red);
+    --highlight-bg: color-mix(in srgb, var(--c-red), transparent 80%);
+    --highlight-text: var(--c-red);
 }

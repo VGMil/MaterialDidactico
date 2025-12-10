@@ -20,6 +20,24 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --ifm-container-width: 100%;
   --ifm-doc-container-width: 100%;
+
+  /* CodePreviewer Variables (Light Mode Default) */
+  --cp-bg: #ffffff;
+  --cp-sidebar-bg: #f6f8fa;
+  --cp-border: #d0d7de;
+  --cp-text: #24292f;
+  --cp-accent: #2e8555;
+  /* Primary green */
+  --cp-accent-hover: rgba(46, 133, 85, 0.1);
+  /* Component Colors (Light Mode) */
+  --c-blue: #0070bc;
+  --c-green: #2e8555;
+  --c-pink: #d11cd5;
+  --c-yellow: #f59f00;
+  --c-red: #d93025;
+
+  --card-bg: #ffffff;
+  --card-text: #24292f;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -32,6 +50,75 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  /* CodePreviewer Variables (Dark Mode) */
+  --cp-bg: #0d1117;
+  --cp-sidebar-bg: #161b22;
+  --cp-border: #30363d;
+  --cp-text: #c9d1d9;
+  --cp-accent: #00ff00;
+  /* Neon green */
+  --cp-accent-hover: rgba(0, 255, 0, 0.1);
+  /* Component Colors (Dark Mode - Neon) */
+  --c-blue: #00ffff;
+  --c-green: #00ff00;
+  --c-pink: #ff00ff;
+  --c-yellow: #ffff00;
+  --c-red: #ff0000;
+
+  --card-bg: #1a1b1e;
+  --card-text: #ffffff;
+}
+
+/* Mobile Typography Optimization */
+@media (max-width: 768px) {
+  :root {
+    --ifm-font-size-base: 13px;
+    /* Further reduced from 14px to 13px */
+    --ifm-line-height-base: 1.5;
+  }
+
+  /* Ensure paragraph text is compact but readable */
+  .markdown p,
+  .markdown ul,
+  .markdown ol,
+  .markdown li {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 0.8rem;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  /* Hide line numbers to save space on small screens */
+  .theme-code-block-line-number-cell,
+  .theme-code-block-line-number,
+  .code-block-line-number,
+  [class*='codeLineNumber'] {
+    display: none !important;
+  }
+
+  /* Reset text alignment on mobile to avoid whitespace rivers */
+  .markdown,
+  .markdown p {
+    text-align: left !important;
+    hyphens: none;
+  }
+}
+
+/* Global Text Alignment (Desktop) - Only paragraphs */
+.markdown p {
+  text-align: justify;
 }
 
 
@@ -43,10 +130,12 @@
   background-color: rgba(255, 255, 255, 0.05);
 }
 
-.docs-doc-id-ClasesAbstractas\/ClasesAbstractas .col {
-  min-width: 100%;
-}
+@media (min-width: 997px) {
+  .docs-doc-id-ClasesAbstractas\/ClasesAbstractas .col {
+    min-width: 100%;
+  }
 
-.docs-doc-id-Interfaces\/Interfaces .col {
-  min-width: 100%;
+  .docs-doc-id-Interfaces\/Interfaces .col {
+    min-width: 100%;
+  }
 }
