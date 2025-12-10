@@ -1,0 +1,325 @@
+.listContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.itemLink {
+    text-decoration: none !important;
+    color: inherit !important;
+    display: block;
+}
+
+.item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: rgba(23, 25, 30, 0.95);
+    /* Dark background */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: none;
+    padding: 1.25rem 1.5rem;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Cyberpunk corner cut */
+    clip-path: polygon(0 0,
+            100% 0,
+            100% 80%,
+            97% 100%,
+            0 100%);
+}
+
+[data-theme='light'] .item {
+    background-color: #ffffff;
+    border-color: #e1e4e8;
+}
+
+/* Colored Bar on Left */
+.item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background-color: var(--item-color);
+    box-shadow: 0 0 15px var(--item-color);
+    transition: width 0.3s ease;
+}
+
+.item:hover {
+    transform: translateX(4px);
+    background-color: rgba(30, 35, 45, 1);
+}
+
+[data-theme='light'] .item:hover {
+    background-color: #f6f8fa;
+}
+
+.item:hover::before {
+    width: 10px;
+}
+
+/* Icon Container */
+.iconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--item-color);
+    filter: drop-shadow(0 0 8px var(--item-color));
+    margin-right: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.item:hover .iconContainer {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 12px var(--item-color));
+}
+
+/* Content */
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.25rem;
+}
+
+/* Title with Permanent Glitch */
+.title {
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 700;
+    font-size: 1.35rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    width: fit-content;
+
+    /* Permanent animation with 5s cycle (heavy rest) */
+    animation: glitch-text-shake 5s infinite linear;
+}
+
+[data-theme='light'] .title {
+    color: #1a1b1e;
+}
+
+.title::before,
+.title::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
+
+.title::before {
+    color: var(--c-blue);
+    z-index: -1;
+    animation: glitch-anim-1 5s infinite linear alternate-reverse;
+}
+
+.title::after {
+    color: var(--c-pink);
+    z-index: -2;
+    animation: glitch-anim-2 5s infinite linear alternate-reverse;
+}
+
+/* Subtitle/Meta */
+.meta {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+[data-theme='light'] .meta {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+/* Progress Bar */
+.progressBar {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-top: 10px;
+    width: 100%;
+    max-width: 180px;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+[data-theme='light'] .progressBar {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.progressFill {
+    height: 100%;
+    background-color: var(--item-color);
+    box-shadow: 0 0 10px var(--item-color);
+    width: var(--progress-width, 60%);
+    position: relative;
+}
+
+/* Color Classes */
+.cyan {
+    --item-color: var(--c-blue, #00ffff);
+}
+
+.pink {
+    --item-color: var(--c-pink, #ff00ff);
+}
+
+.green {
+    --item-color: var(--c-green, #00ff00);
+}
+
+.yellow {
+    --item-color: var(--c-yellow, #ffff00);
+}
+
+.red {
+    --item-color: var(--c-red, #ff0000);
+}
+
+/* Animation Keyframes (Local) */
+@keyframes glitch-text-shake {
+    0% {
+        transform: translate(0);
+    }
+
+    1% {
+        transform: translate(-2px, 1px);
+    }
+
+    2% {
+        transform: translate(-1px, -1px);
+    }
+
+    3% {
+        transform: translate(2px, 0px);
+    }
+
+    4% {
+        transform: translate(0, 2px);
+    }
+
+    5% {
+        transform: translate(0);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+@keyframes glitch-anim-1 {
+    0% {
+        opacity: 1;
+        clip-path: inset(20% 0 80% 0);
+        transform: translate(-2px, 1px);
+    }
+
+    1% {
+        clip-path: inset(60% 0 10% 0);
+        transform: translate(2px, -1px);
+    }
+
+    2% {
+        clip-path: inset(40% 0 50% 0);
+        transform: translate(-2px, 2px);
+    }
+
+    3% {
+        clip-path: inset(80% 0 5% 0);
+        transform: translate(2px, -2px);
+    }
+
+    4% {
+        clip-path: inset(10% 0 60% 0);
+        transform: translate(-1px, 1px);
+    }
+
+    5% {
+        opacity: 0;
+        clip-path: inset(50% 50% 50% 50%);
+        transform: translate(0);
+    }
+
+    100% {
+        opacity: 0;
+        clip-path: inset(50% 50% 50% 50%);
+        transform: translate(0);
+    }
+}
+
+@keyframes glitch-anim-2 {
+    0% {
+        opacity: 1;
+        clip-path: inset(10% 0 60% 0);
+        transform: translate(2px, -1px);
+    }
+
+    1% {
+        clip-path: inset(80% 0 5% 0);
+        transform: translate(-2px, 2px);
+    }
+
+    2% {
+        clip-path: inset(30% 0 20% 0);
+        transform: translate(2px, -2px);
+    }
+
+    3% {
+        clip-path: inset(15% 0 80% 0);
+        transform: translate(-1px, 1px);
+    }
+
+    4% {
+        clip-path: inset(55% 0 10% 0);
+        transform: translate(1px, -1px);
+    }
+
+    5% {
+        opacity: 0;
+        clip-path: inset(50% 50% 50% 50%);
+        transform: translate(0);
+    }
+
+    100% {
+        opacity: 0;
+        clip-path: inset(50% 50% 50% 50%);
+        transform: translate(0);
+    }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .item {
+        padding: 1rem;
+    }
+
+    .title {
+        font-size: 1.1rem;
+    }
+
+    .meta {
+        font-size: 0.8rem;
+    }
+
+    .iconContainer {
+        margin-right: 1rem;
+    }
+}

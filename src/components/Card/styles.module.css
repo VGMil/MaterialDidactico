@@ -3,17 +3,18 @@
     /* Default pink */
     background-color: var(--card-bg);
     border: 2px solid var(--neon-color);
-    box-shadow: 0 0 10px var(--neon-color), inset 0 0 5px rgba(var(--neon-color), 0.2);
-    /* Note: box-shadow with vars inside rgba might fail in standard CSS without calc or RGB vars, 
-       but for simplicity we'll just use the color directly. 
-       Actually, standard CSS colors in RGBA is not valid if variable holds hex.
-       For robustness, we will trust opacity simply on the shadow color or rely on the theme being dark/light enough.
-       Let's stick to the color itself for shadow to avoid complex RGB conversion logic in pure CSS for now,
-       or just use a solid shadow.
-    */
-    box-shadow: 0 0 10px var(--neon-color);
 
-    border-radius: 12px;
+    /* Replaced border-radius with clip-path for cyberpunk look */
+    /* border-radius: 12px; */
+    clip-path: polygon(0 0,
+            100% 0,
+            100% calc(100% - 20px),
+            calc(100% - 20px) 100%,
+            0 100%);
+
+    /* Use filter instead of box-shadow because clip-path clips box-shadow */
+    filter: drop-shadow(0 0 5px var(--neon-color));
+
     padding: 2rem;
     margin: 2rem 0;
     color: var(--card-text);
@@ -27,8 +28,12 @@
         padding: 0.5rem;
         margin: 1rem 0;
         border: none;
-        box-shadow: none !important;
-        /* Force removal of shadow */
+
+        /* Remove clip-path and filter on mobile if we want a simpler look, 
+           or keep them. The original code removed box-shadow/border. */
+        filter: none !important;
+        clip-path: none;
+
         background-color: transparent;
         /* Remove background */
     }
@@ -36,12 +41,14 @@
     /* Optional: Add a subtle separator instead of a full card box */
     .card {
         border-bottom: 1px solid var(--neon-color);
-        border-radius: 0;
+        /* border-radius: 0; */
+        /* Not needed with clip-path removed */
     }
 }
 
 .card:hover {
-    box-shadow: 0 0 20px var(--neon-color);
+    /* Updates shadow on hover */
+    filter: drop-shadow(0 0 15px var(--neon-color));
 }
 
 .pink {

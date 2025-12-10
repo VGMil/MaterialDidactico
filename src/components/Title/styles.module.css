@@ -11,14 +11,41 @@
     width: 100%;
 }
 
-.cursor {
-    animation: blink 1s step-end infinite;
+.glitchText {
+    position: relative;
+    display: inline-block;
+    /* 4s cycle: ~10% active, 90% rest */
+    animation: glitch-text-shake 4s infinite linear;
 }
 
-@keyframes blink {
-    50% {
-        opacity: 0;
-    }
+.glitchText::before,
+.glitchText::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    display: block;
+    /* Ensure they are renderable */
+    visibility: visible;
+}
+
+.glitchText::before {
+    color: var(--c-blue);
+    z-index: -1;
+    animation: glitch-anim-1 4s infinite linear alternate-reverse;
+}
+
+.glitchText::after {
+    color: var(--c-pink);
+    z-index: -2;
+    animation: glitch-anim-2 4s infinite linear alternate-reverse;
+}
+
+.cursor {
+    animation: blink 1s step-end infinite;
 }
 
 @media (max-width: 768px) {
@@ -26,5 +53,130 @@
         font-size: 1.4rem;
         word-break: break-word;
         padding: 0.5rem;
+    }
+}
+
+/* Local Keyframes with Rest Period */
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Shake the main text slightly during glitch phase found in 0-5% and 50-55% roughly */
+@keyframes glitch-text-shake {
+    0% {
+        transform: translate(0);
+    }
+
+    1% {
+        transform: translate(-2px, 1px);
+    }
+
+    2% {
+        transform: translate(-1px, -1px);
+    }
+
+    3% {
+        transform: translate(2px, 0px);
+    }
+
+    4% {
+        transform: translate(0, 2px);
+    }
+
+    5% {
+        transform: translate(0);
+    }
+
+    /* Long Rest */
+    100% {
+        transform: translate(0);
+    }
+}
+
+@keyframes glitch-anim-1 {
+
+    /* Active Phase 0-5% */
+    0% {
+        opacity: 1;
+        clip-path: inset(20% 0 80% 0);
+        transform: translate(-2px, 1px);
+    }
+
+    1% {
+        clip-path: inset(60% 0 10% 0);
+        transform: translate(2px, -1px);
+    }
+
+    2% {
+        clip-path: inset(40% 0 50% 0);
+        transform: translate(-2px, 2px);
+    }
+
+    3% {
+        clip-path: inset(80% 0 5% 0);
+        transform: translate(2px, -2px);
+    }
+
+    4% {
+        clip-path: inset(10% 0 60% 0);
+        transform: translate(-1px, 1px);
+    }
+
+    5% {
+        opacity: 0;
+        clip-path: inset(50% 50% 50% 50%);
+        transform: translate(0);
+    }
+
+    /* Rest Phase */
+    100% {
+        opacity: 0;
+        clip-path: inset(50% 50% 50% 50%);
+        transform: translate(0);
+    }
+}
+
+@keyframes glitch-anim-2 {
+
+    /* Active Phase 0-5% */
+    0% {
+        opacity: 1;
+        clip-path: inset(10% 0 60% 0);
+        transform: translate(2px, -1px);
+    }
+
+    1% {
+        clip-path: inset(80% 0 5% 0);
+        transform: translate(-2px, 2px);
+    }
+
+    2% {
+        clip-path: inset(30% 0 20% 0);
+        transform: translate(2px, -2px);
+    }
+
+    3% {
+        clip-path: inset(15% 0 80% 0);
+        transform: translate(-1px, 1px);
+    }
+
+    4% {
+        clip-path: inset(55% 0 10% 0);
+        transform: translate(1px, -1px);
+    }
+
+    5% {
+        opacity: 0;
+        clip-path: inset(50% 50% 50% 50%);
+        transform: translate(0);
+    }
+
+    /* Rest Phase */
+    100% {
+        opacity: 0;
+        clip-path: inset(50% 50% 50% 50%);
+        transform: translate(0);
     }
 }

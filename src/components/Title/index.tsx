@@ -6,9 +6,12 @@ interface TitleProps {
 }
 
 export default function Title({ children }: TitleProps): React.ReactElement {
+    const textContent = typeof children === 'string' ? children : '';
+
     return (
         <div className={styles.titleContainer}>
-            &gt; {children}<span className={styles.cursor}>_</span>
+            &gt; <span className={styles.glitchText} data-text={textContent}>{children}</span>
+            <span className={styles.cursor}>_</span>
         </div>
     );
 }

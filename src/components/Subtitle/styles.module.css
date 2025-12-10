@@ -17,15 +17,49 @@
     gap: 0.5rem;
     margin: 0;
     margin-bottom: 0.5rem;
+    cursor: default;
 }
 
 .bracket {
     color: var(--subtitle-color);
 }
 
+.textWrapper {
+    position: relative;
+    display: inline-block;
+}
+
 .text {
     text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    /* 5s cycle: ~5% active, 95% rest. Uses local keyframes. */
+    animation: glitch-text-shake 5s infinite linear;
 }
+
+.text::before,
+.text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
+
+.text::before {
+    color: var(--c-blue);
+    z-index: -1;
+    animation: glitch-anim-1 5s infinite linear alternate-reverse;
+}
+
+.text::after {
+    color: var(--c-pink);
+    z-index: -2;
+    animation: glitch-anim-2 5s infinite linear alternate-reverse;
+}
+
 
 .divider {
     border: none;
@@ -63,7 +97,124 @@
     .subtitleContainer {
         font-size: 1.2rem;
         flex-wrap: wrap;
-        /* Ensure text flows naturally if needed, 
-           or keep flex row but allow wrap */
+    }
+}
+
+/* Local Keyframes with Rest Period */
+
+@keyframes glitch-text-shake {
+    0% {
+        transform: translate(0);
+    }
+
+    1% {
+        transform: translate(-2px, 1px);
+    }
+
+    2% {
+        transform: translate(-1px, -1px);
+    }
+
+    3% {
+        transform: translate(2px, 0px);
+    }
+
+    4% {
+        transform: translate(0, 2px);
+    }
+
+    5% {
+        transform: translate(0);
+    }
+
+    /* Long Rest */
+    100% {
+        transform: translate(0);
+    }
+}
+
+@keyframes glitch-anim-1 {
+
+    /* Active Phase 0-5% */
+    0% {
+        opacity: 1;
+        clip-path: inset(20% 0 80% 0);
+        transform: translate(-2px, 1px);
+    }
+
+    1% {
+        clip-path: inset(60% 0 10% 0);
+        transform: translate(2px, -1px);
+    }
+
+    2% {
+        clip-path: inset(40% 0 50% 0);
+        transform: translate(-2px, 2px);
+    }
+
+    3% {
+        clip-path: inset(80% 0 5% 0);
+        transform: translate(2px, -2px);
+    }
+
+    4% {
+        clip-path: inset(10% 0 60% 0);
+        transform: translate(-1px, 1px);
+    }
+
+    5% {
+        opacity: 0;
+        clip-path: inset(50% 50% 50% 50%);
+        transform: translate(0);
+    }
+
+    /* Rest Phase */
+    100% {
+        opacity: 0;
+        clip-path: inset(50% 50% 50% 50%);
+        transform: translate(0);
+    }
+}
+
+@keyframes glitch-anim-2 {
+
+    /* Active Phase 0-5% */
+    0% {
+        opacity: 1;
+        clip-path: inset(10% 0 60% 0);
+        transform: translate(2px, -1px);
+    }
+
+    1% {
+        clip-path: inset(80% 0 5% 0);
+        transform: translate(-2px, 2px);
+    }
+
+    2% {
+        clip-path: inset(30% 0 20% 0);
+        transform: translate(2px, -2px);
+    }
+
+    3% {
+        clip-path: inset(15% 0 80% 0);
+        transform: translate(-1px, 1px);
+    }
+
+    4% {
+        clip-path: inset(55% 0 10% 0);
+        transform: translate(1px, -1px);
+    }
+
+    5% {
+        opacity: 0;
+        clip-path: inset(50% 50% 50% 50%);
+        transform: translate(0);
+    }
+
+    /* Rest Phase */
+    100% {
+        opacity: 0;
+        clip-path: inset(50% 50% 50% 50%);
+        transform: translate(0);
     }
 }

@@ -7,6 +7,7 @@ slug: /
 import Title from '@site/src/components/Title';
 import Card from '@site/src/components/Card';
 import Subtitle from '@site/src/components/Subtitle';
+import TechList from '@site/src/components/TechList';
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
@@ -20,6 +21,22 @@ Esta documentación te guiará a través de los conceptos de Programación Orien
 
 <Card>
 <Subtitle number=' '>Contenido</Subtitle>
-*   [Clases Abstractas](./ClasesAbstractas/ClasesAbstractas.mdx)
-*   [Interfaces](./Interfaces/Interfaces.mdx)
+<TechList items={[
+  {
+    title: 'Clases Abstractas',
+    description: 'Estructuras base y polimorfismo',
+    link: '/docs/ClasesAbstractas',
+    icon: 'BoxSelect',
+    color: 'yellow',
+    progress: 100
+  },
+  {
+    title: 'Interfaces',
+    description: 'Contratos de comportamiento',
+    link: '/docs/Interfaces',
+    icon: 'Cpu',
+    color: 'pink',
+    progress: 100
+  }
+]} />
 </Card>

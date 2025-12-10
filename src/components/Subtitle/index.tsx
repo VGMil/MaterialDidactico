@@ -11,11 +11,15 @@ interface SubtitleProps {
 
 export default function Subtitle({ children, number = "00", color = 'yellow' }: SubtitleProps): React.ReactElement {
     const colorClass = styles[color] ? styles[color] : '';
+    const textContent = typeof children === 'string' ? children : '';
+
     return (
         <div className={`${styles.subtitleWrapper} ${colorClass}`}>
             <h2 className={styles.subtitleContainer}>
                 <span className={styles.bracket}>[{number}] &gt;</span>
-                <span className={styles.text}>{children}</span>
+                <div className={styles.textWrapper}>
+                    <span className={styles.text} data-text={textContent}>{children}</span>
+                </div>
             </h2>
             <hr className={styles.divider} />
         </div>
