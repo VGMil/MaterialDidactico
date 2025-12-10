@@ -55,8 +55,8 @@ export const tourSteps = [
 {/* =================================================================== */}
 {/* Bloque 0 */}
 {/* =================================================================== */}
-<Card id="tour-concepto" color="blue">
-    <Subtitle number="00" color="blue">CONCEPTO: ¿QUÉ ES UNA CLASE ABSTRACTA?</Subtitle>
+<Card color="blue">
+    <Subtitle id="tour-concepto" number="00" color="blue">CONCEPTO: ¿QUÉ ES UNA CLASE ABSTRACTA?</Subtitle>
     Estamos construyendo un **videojuego de rol (RPG)**.<br/>
     Usamos algo llamado "<Highlight color="blue">clases abstractas</Highlight>" porque nos ayudan a que el juego tenga una **base muy organizada y fuerte**.<br/>
     Así nos aseguramos de que todos los elementos importantes 
@@ -68,8 +68,8 @@ export const tourSteps = [
 {/* =================================================================== */}
 {/* Bloque 1 */}
 {/* =================================================================== */}
-<Card id="tour-personaje" color="yellow">
-    <Subtitle number="01" color="yellow">El Contrato: La clase Personaje</Subtitle>
+<Card color="yellow">
+    <Subtitle id="tour-personaje" number="01" color="yellow">El Contrato: La clase Personaje</Subtitle>
     La clase <Highlight color="yellow">Personaje</Highlight> sirve como el **contrato fundamental** para todas las **entidades vivas y activas** en el mundo del juego.<br/>
     
     <Admonition type="danger">No está destinada a ser instanciada; su propósito es <Highlight color="yellow">obligar a todas las subclases</Highlight> a implementar un conjunto mínimo de funcionalidades.</Admonition>
@@ -82,8 +82,8 @@ export const tourSteps = [
 {/* =================================================================== */}
 {/* Bloque 2 */}
 {/* =================================================================== */}
-<Card id="tour-implementacion" color="pink">
-    <Subtitle number="02" color="pink">Implementación de la clase Personaje</Subtitle>
+<Card color="pink">
+    <Subtitle id="tour-implementacion" number="02" color="pink">Implementación de la clase Personaje</Subtitle>
     Las clases concretas (Guerrero, Mercader, Jefe, etc.) <Highlight color="pink">extienden Personaje</Highlight>, convirtiéndose en objetos hijas que pueden ser instanciables del juego. 
     
     <Admonition type="tip">
@@ -122,8 +122,8 @@ export const tourSteps = [
 {/* =================================================================== */}
 {/* Bloque 3 */}
 {/* =================================================================== */}
-<Card id="tour-estructura" color="green">
-    <Subtitle number="02" color="green">Estructura de todos los personajes</Subtitle>    
+<Card color="green">
+    <Subtitle id="tour-estructura" number="02" color="green">Estructura de todos los personajes</Subtitle>    
     <CodePreviewer 
         tree={personajeStructure} 
         defaultExpanded={[

@@ -3,18 +3,18 @@ import styles from './styles.module.css';
 
 type SubtitleColor = 'pink' | 'blue' | 'green' | 'yellow' | 'red';
 
-interface SubtitleProps {
+interface SubtitleProps extends React.HTMLAttributes<HTMLDivElement> {
     children: React.ReactNode;
     number?: string;
     color?: SubtitleColor;
 }
 
-export default function Subtitle({ children, number = "00", color = 'yellow' }: SubtitleProps): React.ReactElement {
+export default function Subtitle({ children, number = "00", color = 'yellow', className, ...props }: SubtitleProps): React.ReactElement {
     const colorClass = styles[color] ? styles[color] : '';
     const textContent = typeof children === 'string' ? children : '';
 
     return (
-        <div className={`${styles.subtitleWrapper} ${colorClass}`}>
+        <div className={`${styles.subtitleWrapper} ${colorClass} ${className || ''}`} {...props}>
             <h2 className={styles.subtitleContainer}>
                 <span className={styles.bracket}>[{number}] &gt;</span>
                 <div className={styles.textWrapper}>

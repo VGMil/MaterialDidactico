@@ -25,6 +25,7 @@ export default function Tour({ steps }: TourProps) {
 
         if (finishedStatuses.includes(status)) {
             setRun(false);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     };
 
