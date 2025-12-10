@@ -18,7 +18,7 @@ export interface TechItem {
     link?: string;
     icon?: string;
     color?: NeonColor;
-    progress?: number; // 0 to 100
+    progress?: number;
 }
 
 interface TechListProps {
@@ -27,36 +27,26 @@ interface TechListProps {
 
 export default function TechList({ items }: TechListProps): React.JSX.Element {
     return (
-        <div className={styles.listContainer}>
+        <div className={styles.gridContainer}>
             {items.map((item, idx) => (
                 <ContentWrapper key={idx} link={item.link}>
-                    <div className={`${styles.item} ${styles[item.color || 'cyan']}`}>
-
-                        {item.icon && (
-                            <div className={styles.iconContainer}>
-                                {getIcon(item.icon)}
-                            </div>
-                        )}
-
-                        <div className={styles.content}>
-                            <div className={styles.header}>
-                                <span className={styles.title} data-text={item.title}>
-                                    {item.title}
-                                </span>
-                            </div>
-
-                            <div className={styles.meta}>
-                                {item.description}
-                            </div>
-
-                            {item.progress !== undefined && (
-                                <div className={styles.progressBar}>
-                                    <div
-                                        className={styles.progressFill}
-                                        style={{ '--progress-width': `${item.progress}%` } as React.CSSProperties}
-                                    />
+                    <div className={styles.card}>
+                        <div className={`${styles.cardHeader} ${styles[item.color || 'cyan']}`}>
+                            {item.icon && (
+                                <div className={styles.iconWrapper}>
+                                    {getIcon(item.icon)}
                                 </div>
                             )}
+                            <div className={styles.overlay} />
+                        </div>
+
+                        <div className={styles.cardBody}>
+                            <span className={styles.category}>TOPIC</span>
+                            <h3 className={styles.title}>{item.title}</h3>
+                            <p className={styles.description}>{item.description}</p>
+
+                            <div className={styles.footer}>
+                            </div>
                         </div>
                     </div>
                 </ContentWrapper>

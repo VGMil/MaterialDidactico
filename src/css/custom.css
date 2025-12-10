@@ -52,21 +52,27 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 
   /* CodePreviewer Variables (Dark Mode) */
-  --cp-bg: #0d1117;
-  --cp-sidebar-bg: #161b22;
-  --cp-border: #30363d;
-  --cp-text: #c9d1d9;
-  --cp-accent: #00ff00;
-  /* Neon green */
-  --cp-accent-hover: rgba(0, 255, 0, 0.1);
-  /* Component Colors (Dark Mode - Neon) */
-  --c-blue: #00ffff;
-  --c-green: #00ff00;
-  --c-pink: #ff00ff;
-  --c-yellow: #ffff00;
-  --c-red: #ff0000;
+  --cp-bg: #13141f;
+  /* Deep Navy/Slate from image */
+  --cp-sidebar-bg: #1a1c29;
+  --cp-border: #2a2d3e;
+  --cp-text: #e2e8f0;
+  --cp-accent: #00E676;
 
-  --card-bg: #1a1b1e;
+  /* Component Colors (Dark Mode - Dashboard Neon) */
+  --c-blue: #00d2d3;
+  /* Cyan/Teal */
+  --c-green: #54e58b;
+  /* Neon Green */
+  --c-pink: #e056fd;
+  /* Neon Purple/Pink */
+  --c-yellow: #ff9f43;
+  /* Neon Orange */
+  --c-red: #ff6b6b;
+  /* Pastel Red */
+
+  --card-bg: #1e1f2b;
+  /* Lighter navy for cards */
   --card-text: #ffffff;
 }
 
