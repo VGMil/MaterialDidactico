@@ -12,12 +12,12 @@ const config: Config = {
   future: {
     v4: true,
   },
-  url: 'https://your-docusaurus-site.example.com',
-  baseUrl: '/',
+  url: 'https://VGMil.github.io',
+  baseUrl: '/MaterialDidactico/',
 
-  organizationName: 'VGMIL',
-  projectName: 'ProgramacionyBasedeDatosII',
-
+  organizationName: 'VGMil',
+  projectName: 'MaterialDidactico',
+  trailingSlash: false,
   onBrokenLinks: 'throw',
 
   i18n: {
