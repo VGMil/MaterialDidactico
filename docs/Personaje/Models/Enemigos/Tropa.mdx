@@ -3,7 +3,7 @@ import Highlight from '@site/src/components/Highlight';
 
 # Tropa
 
-La declaración <Highlight color="green">public class Tropa extends PersonajeModel</Highlight> <br/> indica que Tropa hereda todos los <Highlight color="green">atributos y métodos</Highlight> de la clase abstracta <Highlight color="green">PersonajeModel</Highlight>. Esto garantiza que toda Tropa tenga las propiedades esenciales de un <Highlight color="green">personaje</Highlight> (Vida, Ataque, Defensa, etc.).
+La declaración <Highlight color="green">public class Tropa extends PersonajeModel</Highlight> <br/> indica que Tropa hereda todos los <Highlight color="green">atributos y métodos</Highlight> de la clase abstracta <Highlight color="green">PersonajeModel</Highlight>. Esto garantiza que toda Tropa tenga las propiedades esenciales de un <Highlight color="green">personaje</Highlight> (Vida, Ataque Físico, Defensa, etc.).
 
 <JavaBlock title="package [NombreProyecto].Personaje.Models.Enemigos">
 {`
@@ -12,13 +12,13 @@ import Personaje.Models.PersonajeModel;
 public class Tropa extends PersonajeModel { 
     
     private static final int TropaVida = 500; 
-    private static final int TropaAtaque = 30;
+    private static final int TropaAtaqueFisico = 30;
     private static final int TropaDefensa = 20;
     private static final int TropaVelocidad = 50;
 
     public Tropa(String nombre) {
     // Llama al constructor de la superclase (PersonajeModel)
-        super(TropaVida, TropaAtaque, TropaDefensa, TropaVelocidad, nombre);
+        super(TropaVida, TropaAtaqueFisico, TropaDefensa, TropaVelocidad, nombre);
     }   
 
     @Override
@@ -32,7 +32,7 @@ public class Tropa extends PersonajeModel {
         + enemigo.getNombre() + ".");
 
         // 2. Calculamos el daño efectivo
-        int dañoInfligido = this.ataque - enemigo.getDefensa();
+        int dañoInfligido = this.ataqueFisico - enemigo.getDefensa();
     
         // Aseguramos que el daño sea al menos 1, no negativo
         if (dañoInfligido < 1) {

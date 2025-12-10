@@ -18,6 +18,8 @@
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-container-width: 100%;
+  --ifm-doc-container-width: 100%;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -39,4 +41,12 @@
 
 [data-theme='dark'] .markdown table thead tr {
   background-color: rgba(255, 255, 255, 0.05);
+}
+
+.docs-doc-id-ClasesAbstractas\/ClasesAbstractas .col {
+  min-width: 100%;
+}
+
+.docs-doc-id-Interfaces\/Interfaces .col {
+  min-width: 100%;
 }

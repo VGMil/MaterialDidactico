@@ -4,17 +4,17 @@ import Admonition from '@theme/Admonition';
 
 # PersonajeModel
 
-Clase Abstracta: Contrato Principal. Define atributos y métodos esenciales (salud, atacar, etc.) para todas las subclases.
+Clase Abstracta: Contrato Principal. Define atributos y métodos esenciales (Vida, Ataque Físico, Defensa, Velocidad, atacar, etc.) para todas las subclases.
 
 <JavaBlock title="package [NombreProyecto].Personaje.Models">
 {`
 public abstract class PersonajeModel {
-    int vida, ataque, defensa, velocidad;
+    int vida, ataqueFisico, defensa, velocidad;
     String nombre;
 
-    public PersonajeModel(int vida, int ataque, int defensa, int velocidad, String nombre) {
+    public PersonajeModel(int vida, int ataqueFisico, int defensa, int velocidad, String nombre) {
         this.vida = vida;
-        this.ataque = ataque;
+        this.ataqueFisico = ataqueFisico;
         this.defensa = defensa;
         this.velocidad = velocidad;
         this.nombre = nombre;

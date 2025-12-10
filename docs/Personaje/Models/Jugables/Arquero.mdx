@@ -3,7 +3,7 @@ import Highlight from '@site/src/components/Highlight';
 
 # Arquero
 
-La declaración <Highlight color="green">public class Arquero extends PersonajeModel</Highlight> <br/> indica que Arquero hereda todos los <Highlight color="green">atributos y métodos</Highlight> de la clase abstracta <Highlight color="green">PersonajeModel</Highlight>. Esto garantiza que todo Arquero tenga las propiedades esenciales de un <Highlight color="green">personaje</Highlight> (Vida, Ataque, Defensa, etc.).
+La declaración <Highlight color="green">public class Arquero extends PersonajeModel</Highlight> <br/> indica que Arquero hereda todos los <Highlight color="green">atributos y métodos</Highlight> de la clase abstracta <Highlight color="green">PersonajeModel</Highlight>. Esto garantiza que todo Arquero tenga las propiedades esenciales de un <Highlight color="green">personaje</Highlight> (Vida, Ataque Físico, Defensa, etc.).
 
 <JavaBlock title="package [NombreProyecto].Personaje.Models.Jugables">
 {`
@@ -12,13 +12,13 @@ import Personaje.Models.PersonajeModel;
 public class Arquero extends PersonajeModel { 
     
     private static final int ArqueroVida = 1500; 
-    private static final int ArqueroAtaque = 80;
+    private static final int ArqueroAtaqueFisico = 80;
     private static final int ArqueroDefensa = 40;
     private static final int ArqueroVelocidad = 90;
 
     public Arquero(String nombre) {
     // Llama al constructor de la superclase (PersonajeModel)
-        super(ArqueroVida, ArqueroAtaque, ArqueroDefensa, ArqueroVelocidad, nombre);
+        super(ArqueroVida, ArqueroAtaqueFisico, ArqueroDefensa, ArqueroVelocidad, nombre);
     }   
 
     @Override
@@ -31,8 +31,8 @@ public class Arquero extends PersonajeModel {
         System.out.println("El Arquero " + this.getNombre() + " dispara una flecha certera a "
         + enemigo.getNombre() + "!");
 
-        // 2. Calculamos el daño efectivo (Daño = Ataque - Defensa del Enemigo)
-        int dañoInfligido = this.ataque - enemigo.getDefensa();
+        // 2. Calculamos el daño efectivo (Daño = Ataque Físico - Defensa del Enemigo)
+        int dañoInfligido = this.ataqueFisico - enemigo.getDefensa();
     
         // Aseguramos que el daño sea al menos 1, no negativo
         if (dañoInfligido < 1) {

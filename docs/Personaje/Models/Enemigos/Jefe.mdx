@@ -3,7 +3,7 @@ import Highlight from '@site/src/components/Highlight';
 
 # Jefe
 
-La declaración <Highlight color="green">public class Jefe extends PersonajeModel</Highlight> <br/> indica que Jefe hereda todos los <Highlight color="green">atributos y métodos</Highlight> de la clase abstracta <Highlight color="green">PersonajeModel</Highlight>. Esto garantiza que todo Jefe tenga las propiedades esenciales de un <Highlight color="green">personaje</Highlight> (Vida, Ataque, Defensa, etc.).
+La declaración <Highlight color="green">public class Jefe extends PersonajeModel</Highlight> <br/> indica que Jefe hereda todos los <Highlight color="green">atributos y métodos</Highlight> de la clase abstracta <Highlight color="green">PersonajeModel</Highlight>. Esto garantiza que todo Jefe tenga las propiedades esenciales de un <Highlight color="green">personaje</Highlight> (Vida, Ataque Físico, Defensa, etc.).
 
 <JavaBlock title="package [NombreProyecto].Personaje.Models.Enemigos">
 {`
@@ -12,13 +12,13 @@ import Personaje.Models.PersonajeModel;
 public class Jefe extends PersonajeModel { 
     
     private static final int JefeVida = 5000; 
-    private static final int JefeAtaque = 120;
+    private static final int JefeAtaqueFisico = 120;
     private static final int JefeDefensa = 100;
     private static final int JefeVelocidad = 40;
 
     public Jefe(String nombre) {
     // Llama al constructor de la superclase (PersonajeModel)
-        super(JefeVida, JefeAtaque, JefeDefensa, JefeVelocidad, nombre);
+        super(JefeVida, JefeAtaqueFisico, JefeDefensa, JefeVelocidad, nombre);
     }   
 
     @Override
@@ -32,7 +32,7 @@ public class Jefe extends PersonajeModel {
         + enemigo.getNombre() + "!");
 
         // 2. Calculamos el daño efectivo (Daño explosivo)
-        int dañoInfligido = this.ataque - (enemigo.getDefensa() / 2); // Penetra armadura
+        int dañoInfligido = this.ataqueFisico - (enemigo.getDefensa() / 2); // Penetra armadura
     
         // Aseguramos que el daño sea al menos 1, no negativo
         if (dañoInfligido < 1) {

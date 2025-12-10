@@ -3,7 +3,7 @@ import Highlight from '@site/src/components/Highlight';
 
 # Mago
 
-La declaración <Highlight color="green">public class Mago extends PersonajeModel</Highlight> <br/> indica que Mago hereda todos los <Highlight color="green">atributos y métodos</Highlight> de la clase abstracta <Highlight color="green">PersonajeModel</Highlight>. Esto garantiza que todo Mago tenga las propiedades esenciales de un <Highlight color="green">personaje</Highlight> (Vida, Ataque, Defensa, etc.).
+La declaración <Highlight color="green">public class Mago extends PersonajeModel</Highlight> <br/> indica que Mago hereda todos los <Highlight color="green">atributos y métodos</Highlight> de la clase abstracta <Highlight color="green">PersonajeModel</Highlight>. Esto garantiza que todo Mago tenga las propiedades esenciales de un <Highlight color="green">personaje</Highlight> (Vida, Ataque Físico, Defensa, etc.).
 
 <JavaBlock title="package [NombreProyecto].Personaje.Models.Jugables">
 {`
@@ -12,13 +12,13 @@ import Personaje.Models.PersonajeModel;
 public class Mago extends PersonajeModel { 
     
     private static final int MagoVida = 1200; 
-    private static final int MagoAtaque = 100;
+    private static final int MagoAtaqueFisico = 10;
     private static final int MagoDefensa = 30;
     private static final int MagoVelocidad = 70;
 
     public Mago(String nombre) {
     // Llama al constructor de la superclase (PersonajeModel)
-        super(MagoVida, MagoAtaque, MagoDefensa, MagoVelocidad, nombre);
+        super(MagoVida, MagoAtaqueFisico, MagoDefensa, MagoVelocidad, nombre);
     }   
 
     @Override
@@ -28,11 +28,11 @@ public class Mago extends PersonajeModel {
     @Override
     public void atacar(PersonajeModel enemigo) {
         // 1. Imprimimos el mensaje de acción
-        System.out.println("El Mago " + this.getNombre() + " lanza una bola de fuego a "
+        System.out.println("El Mago " + this.getNombre() + " golpea con su bastón a "
         + enemigo.getNombre() + "!");
 
-        // 2. Calculamos el daño efectivo (Daño = Ataque - Defensa del Enemigo)
-        int dañoInfligido = this.ataque - enemigo.getDefensa();
+        // 2. Calculamos el daño efectivo (Daño = Ataque Físico - Defensa del Enemigo)
+        int dañoInfligido = this.ataqueFisico - enemigo.getDefensa();
     
         // Aseguramos que el daño sea al menos 1, no negativo
         if (dañoInfligido < 1) {
@@ -44,7 +44,7 @@ public class Mago extends PersonajeModel {
 
         // 4. Imprimimos el resultado de la acción
         System.out.println("¡Ha infligido " + dañoInfligido +
-         " puntos de daño!");
+         " puntos de daño! (Daño Físico)");
         System.out.println("La vida restante de " + enemigo.getNombre() +
          " es: " + enemigo.getVida());
     }
